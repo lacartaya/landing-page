@@ -16,3 +16,6 @@ Fecha: 30-10-2026. Ningún contrato ni transferencia se considera verificado sol
 | Analytics, Ads, Calendar, Maps, CRM, IA, monitorización de aplicación | No encontrados en código | Revisar nuevamente si se añaden; configuración de hosting no inspeccionada | No se instalaron |
 
 No se afirma ausencia de transferencias fuera del EEE. Deben identificarse entidad contratante, destinos, garantías vigentes (adecuación o cláusulas y evaluación según corresponda), conservación y mecanismos de supresión por cuenta concreta. El contacto directo por email/WhatsApp también requiere estas decisiones aunque se mantenga el asistente desactivado.
+
+
+Actualización de estructura: por autorización del titular, la landing sustituye a la plantilla anterior en la raíz del repositorio. La plantilla permanece recuperable en el historial. Las referencias a subcarpetas en la cronología anterior describen el estado de aquella revisión.

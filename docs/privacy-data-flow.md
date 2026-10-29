@@ -21,3 +21,6 @@ Fecha: 30-10-2026. Estado previsto y código revisado; servicios de producción 
 ## Minimización y operaciones pendientes
 
 No solicitar datos de pacientes, clientes, contraseñas o categorías especiales. Confirmar que todos los campos obligatorios son necesarios. Configurar acceso mínimo y MFA en buzón/proveedores, responsables de derechos, calendario de revisión y borrado, gestión de incidencias, logs y copias. Revisar contratos de encargo, subencargados, transferencias y garantías antes de habilitar. No imprimir cargas del formulario en logs futuros.
+
+
+Actualización de estructura: por autorización del titular, la landing sustituye a la plantilla anterior en la raíz del repositorio. La plantilla permanece recuperable en el historial. Las referencias a subcarpetas en la cronología anterior describen el estado de aquella revisión.

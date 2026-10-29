@@ -1,10 +1,10 @@
 # Auditoría legal y técnica · 30 de octubre de 2026
 
-**Resultado: preparada para revisión, no autorizada ni lista para publicación comercial.** Auditoría del código local de `landing/`, no certificación jurídica ni auditoría de cuentas de proveedores. No se han publicado cambios ni enviado correos reales.
+**Resultado: preparada para revisión, no autorizada ni lista para publicación comercial.** Auditoría del código local de ``, no certificación jurídica ni auditoría de cuentas de proveedores. No se han publicado cambios ni enviado correos reales.
 
 ## Alcance y evidencia
 
-React, TypeScript, Vite, Tailwind y Motion; Pages Function en `landing/functions/api/contact.ts`. Rutas `/`, `/aviso-legal`, `/politica-de-privacidad`, `/politica-de-cookies`. CTAs mailto, WhatsApp y LinkedIn; un asistente guiado con nueve preguntas y revisión. Sin tienda, cobros, reservas, CRM, modelos de IA, newsletter, Google Analytics, mapas ni píxeles en el código. Los servicios ofrecidos comercialmente no son integraciones instaladas.
+React, TypeScript, Vite, Tailwind y Motion; Pages Function en `functions/api/contact.ts`. Rutas `/`, `/aviso-legal`, `/politica-de-privacidad`, `/politica-de-cookies`. CTAs mailto, WhatsApp y LinkedIn; un asistente guiado con nueve preguntas y revisión. Sin tienda, cobros, reservas, CRM, modelos de IA, newsletter, Google Analytics, mapas ni píxeles en el código. Los servicios ofrecidos comercialmente no son integraciones instaladas.
 
 El repositorio local no tiene commits ni remoto configurado: no fue posible actualizar una rama principal desde GitHub. Se creó `legal/landing-audit`, conservando los archivos existentes. La URL de repositorio aportada no acredita que este checkout esté sincronizado.
 
@@ -65,4 +65,7 @@ La maqueta «estudio calma» aparece como concepto ilustrativo; no se atribuye a
 
 ## Actualización posterior: identificación y autorización de push
 
-El titular aportó nombre completo, NIF y domicilio, confirmó contactos y se identificó como profesional. Incorporados en `landing/src/public-identity.json`; comprobada letra de control del NIF, sin verificar identidad o alta. No existe dominio definitivo todavía. Se mantienen bloqueos de revisión y del envío. La situación profesional administrativa continúa pendiente. El usuario autorizó el push; se integra `landing/` en una rama del remoto existente, preservando la plantilla original. Los hallazgos anteriores describen el estado inicial de la auditoría.
+El titular aportó nombre completo, NIF y domicilio, confirmó contactos y se identificó como profesional. Incorporados en `src/public-identity.json`; comprobada letra de control del NIF, sin verificar identidad o alta. No existe dominio definitivo todavía. Se mantienen bloqueos de revisión y del envío. La situación profesional administrativa continúa pendiente. El usuario autorizó el push; se integra `` en una rama del remoto existente, preservando la plantilla original. Los hallazgos anteriores describen el estado inicial de la auditoría.
+
+
+Actualización de estructura: por autorización del titular, la landing sustituye a la plantilla anterior en la raíz del repositorio. La plantilla permanece recuperable en el historial. Las referencias a subcarpetas en la cronología anterior describen el estado de aquella revisión.

@@ -1,6 +1,6 @@
 # Acciones antes de publicar
 
-**No publicar comercialmente todavía.** Responsable de resolver y confirmar: titular, con asesoramiento jurídico cuando corresponda. No compartir secretos. El titular ha facilitado y autorizado la incorporación y el push de los datos identificativos públicos del aviso legal. Se guardan en `landing/src/public-identity.json`.
+**No publicar comercialmente todavía.** Responsable de resolver y confirmar: titular, con asesoramiento jurídico cuando corresponda. No compartir secretos. El titular ha facilitado y autorizado la incorporación y el push de los datos identificativos públicos del aviso legal. Se guardan en `src/public-identity.json`.
 
 | Clase | Acción y criterio de cierre |
 |---|---|
@@ -19,10 +19,13 @@
 
 ## Configuración una vez verificados los hechos
 
-Los datos aportados se cargan desde `landing/src/public-identity.json`. Se pueden sobrescribir con `VITE_LEGAL_NAME`, `VITE_LEGAL_NIF` y `VITE_LEGAL_ADDRESS` en `landing/.env.production.local` (ignorado por Git). Solo al completar la revisión, definir `VITE_LEGAL_REVIEWED=true`. Son valores **públicos** incorporados a la web, no secretos. No usar valores ficticios para superar la comprobación.
+Los datos aportados se cargan desde `src/public-identity.json`. Se pueden sobrescribir con `VITE_LEGAL_NAME`, `VITE_LEGAL_NIF` y `VITE_LEGAL_ADDRESS` en `.env.production.local` (ignorado por Git). Solo al completar la revisión, definir `VITE_LEGAL_REVIEWED=true`. Son valores **públicos** incorporados a la web, no secretos. No usar valores ficticios para superar la comprobación.
 
 `pnpm check:legal` detecta ausencias; `pnpm build:release` añade esta barrera antes del build. No es validación jurídica, ni impide a alguien ejecutar el build de preview y desplegarlo manualmente. Vincular el futuro pipeline de publicación a build:release.
 
 En servidor: `RESEND_API_KEY`, `CONTACT_FROM`, `TURNSTILE_SECRET`, `TURNSTILE_SITE_KEY`, `CONTACT_HOSTNAME` (solo hostname exacto), `LEGAL_REVIEWED=true`. Las claves privadas nunca van en VITE_. El marcador servidor es independiente del frontend y se mantiene desactivado hasta revisión completa.
 
-Consultar también `landing/EMAIL-SETUP.md`. No se ha desplegado ni enviado email real. El usuario ha autorizado el push de esta versión; no se ha solicitado abrir PR. Dominio definitivo todavía no disponible.
+Consultar también `EMAIL-SETUP.md`. No se ha desplegado ni enviado email real. El usuario ha autorizado el push de esta versión; no se ha solicitado abrir PR. Dominio definitivo todavía no disponible.
+
+
+Actualización de estructura: por autorización del titular, la landing sustituye a la plantilla anterior en la raíz del repositorio. La plantilla permanece recuperable en el historial. Las referencias a subcarpetas en la cronología anterior describen el estado de aquella revisión.

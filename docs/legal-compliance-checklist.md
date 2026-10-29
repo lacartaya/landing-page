@@ -22,3 +22,6 @@ Fecha: 30-10-2026. Marcado significa implementación/verificación indicada, no 
 - [ ] Revisión profesional final y aprobación de publicación.
 
 Ver detalles, evidencias y limitaciones en [legal-audit.md](legal-audit.md); orden de cierre en [pre-launch-legal-actions.md](pre-launch-legal-actions.md).
+
+
+Actualización de estructura: por autorización del titular, la landing sustituye a la plantilla anterior en la raíz del repositorio. La plantilla permanece recuperable en el historial. Las referencias a subcarpetas en la cronología anterior describen el estado de aquella revisión.
