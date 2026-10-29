@@ -1,3 +1,7 @@
+## Landing de Luis Cartaya
+
+La versión actual de la marca personal está en [`landing/`](landing/README.md). Incluye el asistente guiado y las páginas legales; la documentación de revisión está en [`docs/`](docs/legal-audit.md). Se conserva la plantilla original en la raíz. La configuración de un futuro despliegue de esta versión deberá usar `landing/` como directorio del proyecto. No está aprobada todavía para publicación comercial.
+
 # Welcome to your Lovable project
 
 ## Project info
