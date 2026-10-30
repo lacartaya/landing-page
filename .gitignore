@@ -6,3 +6,6 @@ dist/
 .pnpm-store/
 .DS_Store
 *.log
+
+.cloudflare/
+.wrangler/

@@ -22,3 +22,8 @@ Recursos visuales y fuentes locales en public; OFL incluidas. Sin analítica, co
 Vite no ejecuta Pages Functions ni aplica `_headers`. El futuro despliegue Pages debe servir `dist/` junto con las Functions de este proyecto; no basta alojar solo los archivos estáticos para enviar correo. Probar las rutas SPA y cabeceras en ese entorno. No existe configuración de despliegue activa en este checkout.
 
 Consultar [activación del correo](EMAIL-SETUP.md), [auditoría](docs/legal-audit.md) y [bloqueos de lanzamiento](docs/pre-launch-legal-actions.md). El build de preview contiene textos de borrador. Robots y noindex son señales de indexación, no controles de acceso. No publicar hasta resolver pendientes.
+
+
+## Entornos Cloudflare
+
+Consultar [flujo main/develop y acceso privado](docs/deployment.md). El despliegue actual usa Workers con Static Assets, no Pages; las referencias históricas a Pages describen la implementación inicial. El código de contacto se reutiliza desde worker/index.ts.

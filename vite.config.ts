@@ -1,3 +1,4 @@
 import {defineConfig} from 'vite';
 import tailwindcss from '@tailwindcss/vite';
-export default defineConfig({plugins:[tailwindcss()]});
+import {cloudflare} from '@cloudflare/vite-plugin';
+export default defineConfig({plugins:[tailwindcss(),cloudflare()]});
