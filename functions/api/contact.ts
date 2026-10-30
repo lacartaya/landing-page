@@ -1,9 +1,10 @@
-type Env={RESEND_API_KEY?:string;CONTACT_FROM?:string;TURNSTILE_SECRET?:string;TURNSTILE_SITE_KEY?:string;LEGAL_REVIEWED?:string;CONTACT_HOSTNAME?:string};
+export interface InquiryDB {prepare(sql:string):{bind(...values:unknown[]):{run():Promise<{success:boolean}>}}}
+type Env={DB?:InquiryDB;TURNSTILE_SECRET?:string;TURNSTILE_SITE_KEY?:string;LEGAL_REVIEWED?:string;CONTACT_HOSTNAME?:string};
 const fields=['business','presence','website','goal','details','timing','name','email','phone'];
 const required=['business','presence','goal','details','timing','name','email'];
 const reply=(status:number,error:string)=>Response.json({ok:false,error},{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'}});
 export async function onRequest({request,env}:{request:Request;env:Env}):Promise<Response>{
- if(request.method==='GET')return Response.json({siteKey:env.LEGAL_REVIEWED==='true'?env.TURNSTILE_SITE_KEY||null:null,enabled:env.LEGAL_REVIEWED==='true'&&Boolean(env.RESEND_API_KEY&&env.CONTACT_FROM&&env.TURNSTILE_SECRET&&env.CONTACT_HOSTNAME)},{headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'}});
+ if(request.method==='GET')return Response.json({siteKey:env.LEGAL_REVIEWED==='true'?env.TURNSTILE_SITE_KEY||null:null,enabled:env.LEGAL_REVIEWED==='true'&&Boolean(env.DB&&env.TURNSTILE_SECRET&&env.CONTACT_HOSTNAME)},{headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'}});
  if(request.method!=='POST')return reply(405,'Método no permitido.');
  if(request.headers.get('Origin')!==new URL(request.url).origin)return reply(403,'Origen no permitido.');
  if(!request.headers.get('Content-Type')?.includes('application/json'))return reply(415,'Formato no permitido.');
@@ -15,14 +16,13 @@ export async function onRequest({request,env}:{request:Request;env:Env}):Promise
  for(const key of fields){if(a[key]!==undefined&&(typeof a[key]!=='string'||a[key].length>(key==='details'?2000:500)))return reply(400,'Revisa la longitud de tus respuestas.')}
  if(required.some(key=>typeof a[key]!=='string'||!a[key].trim())||!/^\S+@[^\s@]+\.[^\s@]+$/.test(a.email)||/[\r\n]/.test(a.email))return reply(400,'Completa los datos obligatorios y un correo válido.');
  if(typeof data.requestId!=='string'||! /^[0-9a-f-]{36}$/i.test(data.requestId))return reply(400,'Identificador inválido.');
- if(!env.RESEND_API_KEY||!env.CONTACT_FROM)return reply(503,'El envío aún no está disponible. Tus respuestas se conservan mientras mantengas esta página abierta.');
- // Require bot protection before enabling public email submission.
+ if(!env.DB)return reply(503,'El envío aún no está disponible. Tus respuestas se conservan mientras mantengas esta página abierta.');
+ // Require bot protection before enabling public inquiry submission.
  if(!env.TURNSTILE_SECRET||!env.CONTACT_HOSTNAME||typeof data.token!=='string'||data.token.length>2048)return reply(503,'El envío seguro aún no está activado. Contacta directamente con Luis.');
  try{
  const check=await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify',{method:'POST',body:new URLSearchParams({secret:env.TURNSTILE_SECRET,response:data.token}),signal:AbortSignal.timeout(10000)});const verified=await check.json() as {success:boolean;hostname?:string;action?:string};if(!verified.success||verified.hostname!==env.CONTACT_HOSTNAME||verified.action!=='contact')return reply(400,'No se pudo verificar el envío. Inténtalo de nuevo.');
- const labels=['Negocio','Presencia actual','Web / redes','Objetivo','Necesidad','Plazo','Nombre','Correo','Teléfono y disponibilidad'];
- const text='Nueva solicitud desde el asistente de Luis Cartaya\n\n'+fields.map((key,i)=>`${labels[i]}: ${a[key]?.trim()||'No indicado'}`).join('\n\n')+'\n\nSolicitud de información enviada por el visitante. Versión de información de privacidad: 2026-10-30.';
- const result=await fetch('https://api.resend.com/emails',{method:'POST',headers:{Authorization:`Bearer ${env.RESEND_API_KEY}`,'Content-Type':'application/json','Idempotency-Key':data.requestId},body:JSON.stringify({from:env.CONTACT_FROM,to:['cartayala@gmail.com'],reply_to:a.email,text,subject:'Nueva consulta de presencia digital'}),signal:AbortSignal.timeout(15000)});
- if(!result.ok)return reply(502,'No se pudo enviar. Inténtalo de nuevo en unos minutos.');return Response.json({ok:true},{headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'}});
- }catch{return reply(502,'No se pudo conectar con el servicio de correo. Inténtalo de nuevo.');}
+ const record=Object.fromEntries(fields.map(key=>[key,a[key]?.trim()||'']));
+ const result=await env.DB.prepare('INSERT INTO inquiries (id, created_at, status, name, email, answers_json) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO NOTHING').bind(data.requestId,new Date().toISOString(),'new',record.name,record.email,JSON.stringify(record)).run();
+ if(!result.success)return reply(502,'No se pudo enviar. Inténtalo de nuevo en unos minutos.');return Response.json({ok:true},{headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'}});
+ }catch{return reply(502,'No se pudo conectar con el registro de solicitudes. Inténtalo de nuevo.');}
 }

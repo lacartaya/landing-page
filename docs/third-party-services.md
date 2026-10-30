@@ -4,9 +4,8 @@ Fecha: 30-10-2026. Ningún contrato ni transferencia se considera verificado sol
 
 | Servicio | Estado / datos / finalidad | Base prevista y revisión pendiente | Reducción aplicada |
 |---|---|---|---|
-| Cloudflare Pages / Functions | Previsto hosting/API; IP, metadatos y resumen enviado | Seguridad/interés legítimo y consulta precontractual; revisar entidad, DPA, subencargados, logs, ubicaciones y transferencias | Sin DB propia; errores sin datos; API no-store |
+| Cloudflare Workers / D1 | Previsto hosting/API; IP, metadatos y resumen enviado | Seguridad/interés legítimo y consulta precontractual; revisar entidad, DPA, subencargados, logs, ubicaciones y transferencias | D1 de desarrollo en jurisdicción UE; errores sin datos; API no-store |
 | Cloudflare Turnstile | Condicional, no activo sin configuración revisada; señales técnicas y token antiabuso | Interés legítimo de seguridad; revisar exención de tecnologías, privacidad/DPA, transferencias y pre-clearance | Carga solo al revisar resumen; hostname/action comprobados, sin remoteip explícita |
-| Resend | Envío previsto; nombre, email y resumen, metadatos | Consulta solicitada; DPA, retención, destinos/transferencias y garantías pendientes | Destinatario fijo, texto simple, clave solo servidor |
 | Gmail / Google | Buzón de Luis receptor de consultas | Revisar modalidad de cuenta y adecuación contractual al uso profesional, acuerdos disponibles, transferencias y retención | Sin SDK Google en web; acceso restringido y calendario de borrado pendientes |
 | WhatsApp / Meta | Enlace voluntario, sin SDK; en destino datos que comparta visitante | Consulta solicitada; revisar cuenta profesional, condiciones, terceros y transferencias | Solo navegación al elegir enlace |
 | LinkedIn | Enlace voluntario al perfil | Canal de contacto externo; revisar tratamiento de mensajes y transferencias | Sin píxel ni widget incrustado |
