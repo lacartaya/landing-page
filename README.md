@@ -27,3 +27,8 @@ Consultar [activación del correo](EMAIL-SETUP.md), [auditoría](docs/legal-audi
 ## Entornos Cloudflare
 
 Consultar [flujo main/develop y acceso privado](docs/deployment.md). El despliegue actual usa Workers con Static Assets, no Pages; las referencias históricas a Pages describen la implementación inicial. El código de contacto se reutiliza desde worker/index.ts.
+
+
+## Flujo de promoción
+
+Desarrolla en `develop`; sus pushes actualizan el entorno privado de pruebas. Para preparar una versión, ejecuta manualmente **Prepare production promotion** en GitHub Actions y escribe `PROMOTE`. La Action pasa tests y build, luego abre una PR de `develop` a `main`. Revisa y fusiona esa PR para publicar; Cloudflare despliega `main` tras el merge. GitHub bloquea los pushes directos a `main`.
