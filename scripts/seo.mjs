@@ -12,7 +12,7 @@ const dir='.cloudflare/output/v0/workers/default/assets';
 let html=readFileSync(dir+'/index.html','utf8');
 if(publicSite)html=html.replace('content="noindex,nofollow"','content="index,follow"').replace('</head>',`<link rel="canonical" href="${origin}/"/><meta property="og:url" content="${origin}/"/><meta property="og:image" content="${origin}/images/logo.png"/><meta name="twitter:image" content="${origin}/images/logo.png"/></head>`);
 writeFileSync(dir+'/index.html',html);
-const routes=['/','/aviso-legal','/politica-de-privacidad','/politica-de-cookies'];
+const routes=['/','/aviso-legal','/politica-de-privacidad','/politica-de-cookies','/servicios/presencia-digital','/servicios/seo-local','/servicios/automatizacion','/servicios/agentes-ia'];
 writeFileSync(dir+'/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+(publicSite?routes.map(p=>`<url><loc>${origin}${p}</loc></url>`).join(''):'')+'</urlset>');
 writeFileSync(dir+'/robots.txt',publicSite?`User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: ${origin}/sitemap.xml\n`:'User-agent: *\nDisallow: /\n');
 if(publicSite)writeFileSync(dir+'/_headers',readFileSync(dir+'/_headers','utf8').replace(/.*X-Robots-Tag:.*\n?/g,''));
