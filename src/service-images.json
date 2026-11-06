@@ -1,0 +1,42 @@
+{
+  "presencia-digital": {
+    "author": "Compagnons",
+    "url": "https://unsplash.com/photos/website-wireframe-sketch-on-paper-4UGmm3WRUoQ",
+    "bank": "Unsplash",
+    "license": "https://unsplash.com/license",
+    "alt": "Bocetos en papel de la estructura y navegación de una web.",
+    "position": "50% 48%",
+    "width": 1200,
+    "height": 900
+  },
+  "seo-local": {
+    "author": "Bundo Kim",
+    "url": "https://unsplash.com/photos/a-white-storefront-with-flowers-and-a-chalkboard-sign-v1sEpu48OHc",
+    "bank": "Unsplash",
+    "license": "https://unsplash.com/license",
+    "alt": "Fachada clara de un pequeño comercio a pie de calle.",
+    "position": "60% 50%",
+    "width": 1200,
+    "height": 546
+  },
+  "automatizacion": {
+    "author": "RDNE Stock project",
+    "url": "https://www.pexels.com/photo/sticky-notes-on-whiteboard-7580842/",
+    "bank": "Pexels",
+    "license": "https://www.pexels.com/license/",
+    "alt": "Tablero de tareas organizado en pendientes, en curso y completadas.",
+    "position": "50% 48%",
+    "width": 1200,
+    "height": 800
+  },
+  "agentes-ia": {
+    "author": "Leeloo The First",
+    "url": "https://www.pexels.com/photo/a-woman-sitting-in-front-of-a-laptop-and-a-paper-on-a-clipboard-8938939/",
+    "bank": "Pexels",
+    "license": "https://www.pexels.com/license/",
+    "alt": "Una persona revisa información en papel junto a su portátil.",
+    "position": "50% 48%",
+    "width": 1200,
+    "height": 801
+  }
+}
